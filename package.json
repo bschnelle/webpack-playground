@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --reporter nyan --require test/setup.js --recursive",
     "start": "webpack-dev-server --content-base dist/"
   },
   "author": "",
@@ -22,7 +22,9 @@
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
+    "chai": "^3.5.0",
     "css-loader": "^0.23.1",
+    "enzyme": "^2.4.1",
     "eslint": "^3.1.1",
     "eslint-config-standard": "^5.1.0",
     "eslint-config-standard-react": "^2.2.0",
@@ -34,9 +36,12 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.22.0",
+    "jsdom": "^9.4.1",
     "node-sass": "^3.8.0",
     "normalize.css": "^4.0.0",
+    "react-addons-test-utils": "^15.3.0",
     "sass-loader": "^4.0.0",
+    "sinon": "^1.17.5",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
