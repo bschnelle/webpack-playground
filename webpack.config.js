@@ -1,4 +1,5 @@
 var path = require('path')
+var webpack = require('webpack')
 // var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -13,11 +14,16 @@ module.exports = {
 
   /** serve index.html in response to 404s */
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    hot: true
   },
 
   entry: {
-    app: ['./src/index.js']
+    app: [
+      'webpack-dev-server/client?http://localhost:8080/', // <--- auto refresh
+      'webpack/hot/only-dev-server', // <--- HMR change to dev-server to refresh on HMR reload failure
+      './src/index.js'
+    ]
   },
 
   module: {
@@ -27,7 +33,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel'
+        loader: 'react-hot!babel'
       },
 
       /** SASS css-modules */
@@ -44,6 +50,7 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
 
     /**
      * split css into separate file (instead of inlined style tags)
